@@ -1,30 +1,6 @@
-struct Todo {
-    id: i32,
-    title: String,
-    desc: String,
-    completed: bool,
-}
+mod todo;
 
-impl Todo {
-    fn new(id: i32, title: String, desc: String, completed: bool) -> Self {
-        Self {
-            id,
-            title,
-            desc,
-            completed,
-        }
-    }
-}
-
-impl std::fmt::Display for Todo {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        writeln!(
-            f,
-            "id - {}\ntitle - {}\ndesc - {}\ncompleted - {}\n",
-            self.id, self.title, self.desc, self.completed
-        )
-    }
-}
+use todo::Todo;
 
 fn main() {
     let new_todo = Todo::new(
