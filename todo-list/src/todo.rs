@@ -1,5 +1,6 @@
+use colored::*;
 pub struct Todo {
-    id: i32,
+    pub id: i32,
     title: String,
     desc: String,
     completed: bool,
@@ -18,10 +19,19 @@ impl Todo {
 
 impl std::fmt::Display for Todo {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let completed = if self.completed {
+            "yes".green()
+        } else {
+            "no".red()
+        };
+
         writeln!(
             f,
             "id - {}\ntitle - {}\ndesc - {}\ncompleted - {}\n",
-            self.id, self.title, self.desc, self.completed
+            self.id.to_string().blue(),
+            self.title.green(),
+            self.desc.green(),
+            completed
         )
     }
 }
