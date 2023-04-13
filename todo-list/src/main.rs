@@ -1,5 +1,6 @@
 mod todo;
 
+use colored::*;
 use todo::Todo;
 
 fn main() {
@@ -10,5 +11,5 @@ fn main() {
         false,
     );
 
-    println!("{}", new_todo);
+    println!("{} {}", new_todo, "hello".green());
 }
