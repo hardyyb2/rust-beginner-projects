@@ -1,13 +1,14 @@
 use colored::*;
+use uuid::Uuid;
 pub struct Todo {
-    pub id: i32,
+    pub id: Uuid,
     title: String,
     desc: String,
     completed: bool,
 }
 
 impl Todo {
-    pub fn new(id: i32, title: String, desc: String, completed: bool) -> Self {
+    pub fn new(id: Uuid, title: String, desc: String, completed: bool) -> Self {
         Self {
             id,
             title,

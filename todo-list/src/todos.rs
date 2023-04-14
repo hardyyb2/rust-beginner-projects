@@ -1,5 +1,7 @@
 use std::fmt;
 
+use uuid::Uuid;
+
 use crate::todo::Todo;
 
 pub struct Todos {
@@ -15,7 +17,7 @@ impl Todos {
         self.todos.push(todo)
     }
 
-    pub fn delete(&mut self, id: i32) -> bool {
+    pub fn delete(&mut self, id: Uuid) -> bool {
         if let Some(index) = self.todos.iter().position(|todo| todo.id == id) {
             self.todos.remove(index);
             true
