@@ -1,5 +1,7 @@
 use colored::*;
 use uuid::Uuid;
+
+#[derive(Clone)]
 pub struct Todo {
     pub id: Uuid,
     title: String,

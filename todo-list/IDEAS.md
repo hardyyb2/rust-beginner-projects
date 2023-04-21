@@ -1,0 +1,3 @@
+- delete multiple
+- separate fonts and colors
+- edit
