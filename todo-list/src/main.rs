@@ -1,12 +1,13 @@
-mod todo;
-mod todos;
+mod todo_list {
+    pub mod todo;
+    pub mod todos;
+}
 
+use crate::todo_list::todo::Todo;
+use crate::todo_list::todos::Todos;
 use colored::Colorize;
 use std::{io, process, vec};
 use uuid::Uuid;
-
-use todo::Todo;
-use todos::Todos;
 
 fn create_todo() -> Todo {
     let (mut title, mut desc): (String, String) = (String::new(), String::new());
@@ -102,7 +103,7 @@ fn show_menu(todo_list: &mut Todos) {
                 }
 
                 if !result.deleted.is_empty() {
-                    println!("not found todos for ids - {:?}", result.not_found);
+                    println!("not found todos for ids - {:?}", result.not_found)
                 }
             }
             Ok(4) => println!("edit a todo"),

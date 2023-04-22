@@ -2,7 +2,7 @@ use std::{collections::HashMap, fmt};
 
 use uuid::Uuid;
 
-use crate::todo::Todo;
+use super::todo::Todo;
 
 pub struct DeleteMultipleResult {
     pub deleted: Vec<Uuid>,
