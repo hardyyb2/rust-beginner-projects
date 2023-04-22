@@ -1,4 +1,4 @@
-use std::fmt;
+use std::{collections::HashMap, fmt};
 
 use uuid::Uuid;
 
@@ -34,18 +34,24 @@ impl Todos {
     }
 
     pub fn delete_multiple(&mut self, ids: &[Uuid]) -> DeleteMultipleResult {
-        let mut not_found: Vec<Uuid> = vec![];
-        let mut deleted: Vec<Uuid> = vec![];
+        let (mut remaining, mut deleted): (HashMap<Uuid, bool>, Vec<Uuid>) =
+            (HashMap::new(), Vec::new());
 
         self.todos.retain(|todo| {
             if ids.contains(&todo.id) {
                 deleted.push(todo.id);
                 return true;
             } else {
-                not_found.push(todo.id);
+                remaining.insert(todo.id, true);
                 false
             }
         });
+
+        let not_found = ids
+            .into_iter()
+            .filter(|id| !remaining.contains_key(id))
+            .cloned()
+            .collect();
 
         DeleteMultipleResult { deleted, not_found }
     }
